@@ -1,0 +1,223 @@
+@import url("https://fonts.googleapis.com/css2?family=Doto:wght@500&display=swap");
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  --bg: #0a0a0a;
+  --bg-star: #fde047;
+  --bg-tree: #065f46;
+  --bg-tree-lighten: #059669;
+  --bg-trunk: #451a03;
+  --bg-trunk-lighten: #55280c;
+  --noise: url("data:image/svg+xml;base64,PHN2ZyBpZD0ibm9pc2UiIHN0eWxlPSJkaXNwbGF5OiBub25lIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZlcnNpb249IjEuMSIgeG1sbnM6eGxpbms9Imh0dHA6Ly93d3cudzMub3JnLzE5OTkveGxpbmsiIHhtbG5zOnN2Z2pzPSJodHRwOi8vc3ZnanMuZGV2L3N2Z2pzIiB2aWV3Qm94PSIwIDAgNzAwIDcwMCIgd2lkdGg9IjcwMCIgaGVpZ2h0PSI3MDAiPgogIDxkZWZzPgogICAgPGZpbHRlciBpZD0ibm5ub2lzZS1maWx0ZXIiIHg9Ii0yMCUiIHk9Ii0yMCUiIHdpZHRoPSIxNDAlIiBoZWlnaHQ9IjE0MCUiIGZpbHRlclVuaXRzPSJvYmplY3RCb3VuZGluZ0JveCIgcHJpbWl0aXZlVW5pdHM9InVzZXJTcGFjZU9uVXNlIiBjb2xvci1pbnRlcnBvbGF0aW9uLWZpbHRlcnM9ImxpbmVhclJHQiI+CiAgICAgIDxmZVR1cmJ1bGVuY2UgdHlwZT0iZnJhY3RhbE5vaXNlIiBiYXNlRnJlcXVlbmN5PSIwLjEwMiIgbnVtT2N0YXZlcz0iNCIgc2VlZD0iMTUiIHN0aXRjaFRpbGVzPSJzdGl0Y2giIHg9IjAlIiB5PSIwJSIgd2lkdGg9IjEwMCUiIGhlaWdodD0iMTAwJSIgcmVzdWx0PSJ0dXJidWxlbmNlIj48L2ZlVHVyYnVsZW5jZT4KICAgICAgPGZlU3BlY3VsYXJMaWdodGluZyBzdXJmYWNlU2NhbGU9IjE0IiBzcGVjdWxhckNvbnN0YW50PSIwLjciIHNwZWN1bGFyRXhwb25lbnQ9IjIwIiBsaWdodGluZy1jb2xvcj0iIzA1OTY2OSIgeD0iMCUiIHk9IjAlIiB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBpbj0idHVyYnVsZW5jZSIgcmVzdWx0PSJzcGVjdWxhckxpZ2h0aW5nIj4KICAgICAgICA8ZmVEaXN0YW50TGlnaHQgYXppbXV0aD0iMyIgZWxldmF0aW9uPSI5OSI+PC9mZURpc3RhbnRMaWdodD4KICAgICAgPC9mZVNwZWN1bGFyTGlnaHRpbmc+CgogICAgPC9maWx0ZXI+CiAgPC9kZWZzPgogIDxyZWN0IHdpZHRoPSI3MDAiIGhlaWdodD0iNzAwIiBmaWxsPSJ0cmFuc3BhcmVudCI+PC9yZWN0PgogIDxyZWN0IHdpZHRoPSI3MDAiIGhlaWdodD0iNzAwIiBmaWxsPSIjMDU5NjY5IiBmaWx0ZXI9InVybCgjbm5ub2lzZS1maWx0ZXIpIj48L3JlY3Q+Cjwvc3ZnPg==");
+}
+
+html,
+body {
+  height: 100%;
+}
+
+body {
+  display: grid;
+  place-items: center;
+  background: var(--bg);
+  font-family: "Doto", sans-serif;
+  text-transform: uppercase;
+}
+
+figure {
+  --size: 10vmin;
+  display: grid;
+  grid-template-columns: 1fr;
+  grid-template-rows: auto 1fr calc(var(--size) / 2);
+  gap: 0.5vmin;
+  justify-items: center;
+}
+
+.star {
+  position: relative;
+  grid-row: 1;
+  grid-column: 1;
+  inline-size: 0.3vmin;
+  block-size: calc(var(--size) / 3);
+  background-color: var(--bg-star);
+  border-radius: 360px;
+
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-color: inherit;
+    inline-size: inherit;
+    block-size: inherit;
+    border-radius: inherit;
+  }
+
+  &::before {
+    rotate: 60deg;
+  }
+
+  &::after {
+    rotate: 120deg;
+  }
+}
+
+.trunk {
+  grid-column: 1;
+  grid-row: 2 / -1;
+  margin-block-start: 1vmin;
+  inline-size: calc(var(--size) / 3);
+  clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
+  background: conic-gradient(
+    from -0.65deg at center top,
+    var(--bg-trunk-lighten) 50%,
+    var(--bg-trunk) 50%
+  );
+}
+
+.tree {
+  position: relative;
+  grid-column: 1;
+  grid-row: 2;
+  display: grid;
+  justify-items: center;
+
+  * {
+    --offset: 97%;
+    background: radial-gradient(
+        circle at top left,
+        transparent,
+        var(--bg-tree) 88%
+      ),
+      var(--noise),
+      conic-gradient(
+        from -10deg at center 0%,
+        var(--bg-tree-lighten) 50%,
+        transparent 50%
+      );
+    inline-size: calc(var(--size) * sqrt(var(--i)));
+    aspect-ratio: 1 / cos(30deg);
+    clip-path: polygon(
+      49% 0%,
+      0 100%,
+      10% var(--offset),
+      20% 100%,
+      30% var(--offset),
+      40% 100%,
+      50% var(--offset),
+      60% 100%,
+      70% var(--offset),
+      80% 100%,
+      90% var(--offset),
+      100% 100%
+    );
+  }
+
+  > * + * {
+    margin-block-start: calc((var(--size) * -0.35) * sqrt(var(--i)));
+  }
+}
+
+.lights {
+  --s1: 0.5vmin;
+  --s2: calc(var(--s1) + 1px);
+  position: relative;
+  inline-size: calc(var(--size) * 2);
+  grid-column: 1;
+  grid-row: 2;
+  background: radial-gradient(
+      circle at 45% 10%,
+      lightblue var(--s1),
+      transparent var(--s2)
+    ),
+    radial-gradient(circle at 35% 25%, gold var(--s1), transparent var(--s2)),
+    radial-gradient(
+      circle at 70% 30%,
+      mediumorchid var(--s1),
+      transparent var(--s2)
+    ),
+    radial-gradient(circle at 52% 40%, pink var(--s1), transparent var(--s2)),
+    radial-gradient(
+      circle at 66% 54%,
+      lightsalmon var(--s1),
+      transparent var(--s2)
+    ),
+    radial-gradient(circle at 86% 70%, yellow var(--s1), transparent var(--s2)),
+    radial-gradient(circle at 25% 55%, red var(--s1), transparent var(--s2)),
+    radial-gradient(circle at 45% 60%, white var(--s1), transparent var(--s2)),
+    radial-gradient(circle at 55% 76%, hotpink var(--s1), transparent var(--s2)),
+    radial-gradient(
+      circle at 32% 80%,
+      royalblue var(--s1),
+      transparent var(--s2)
+    ),
+    radial-gradient(
+      circle at 15% 90%,
+      lightcoral var(--s1),
+      transparent var(--s2)
+    ),
+    radial-gradient(
+      circle at 75% 86%,
+      papayawhip var(--s1),
+      transparent var(--s2)
+    ),
+    radial-gradient(circle at 45% 94%, hotpink var(--s1), transparent var(--s2));
+
+  &::after {
+    content: "";
+    position: absolute;
+    inline-size: 100%;
+    block-size: 100%;
+    background: inherit;
+    filter: blur(4px);
+  }
+}
+
+/* Animations */
+.star {
+  animation: star 1s steps(3) infinite;
+}
+
+.trunk {
+  animation: wiggle 2s steps(2) alternate infinite;
+}
+
+.tree > * {
+  animation: wiggle 3s calc(var(--i) * -0.2s) steps(2) alternate infinite;
+}
+
+.lights {
+  animation: wiggle 1s steps(2) alternate infinite;
+
+  &::after {
+    animation: blink 2s steps(1) infinite;
+  }
+}
+
+@keyframes star {
+  to {
+    rotate: 55deg;
+  }
+}
+
+@keyframes wiggle {
+  0% {
+    translate: 1px -1px;
+  }
+  50% {
+    rotate: -1deg;
+  }
+  100% {
+    translate: 0px 1px;
+  }
+}
+
+@keyframes blink {
+  50%,
+  100% {
+    opacity: 0;
+  }
+}
