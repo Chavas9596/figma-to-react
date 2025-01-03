@@ -39,7 +39,7 @@ const Dashboard = () => {
   return (
     <section className="min-h-screen flex items-center">
       <div className="container mx-auto">
-        <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-5 gap-4">
           {resData.map((item, index) => (
             <div key={index} className="bg-white shadow-md p-4 rounded-md">
               <div className="relative w-full h-48">
