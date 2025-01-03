@@ -22,6 +22,7 @@ export default function Home() {
         <div className="lights"></div>
       </figure>
       <div className="text-2xl">Happy New Year 2025! 😊</div>
+      <div className="text-2xl">Wishing you and your loved ones are happy, healthy and all goes well.</div>
     </>
   );
 }
